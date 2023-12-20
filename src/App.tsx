@@ -4,7 +4,7 @@ import React from "react";
 // import {applyStyleModifiers} from 'styled-components-modifiers';
 
 const App = () => {
-  return <>Hola Mundo</>
+  return <div>Hola Mundo</div>
 }
 
 /* const BUTTON_MODIFIERS = {

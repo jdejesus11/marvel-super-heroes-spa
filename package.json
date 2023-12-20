@@ -11,7 +11,9 @@
     "build": "rm -rf dist && webpack --config webpack.dev.js",
     "build:prod": "webpack --config webpack.prod.js",
     "build:dev": "webpack-dev-server --port 3000 --config webpack.dev.js --open",
-    "lint": "eslint 'src/**'"
+    "lint": "eslint 'src/**'",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "keywords": [],
   "author": "Juan Carlos De Jesus",
@@ -67,6 +69,7 @@
   },
   "dependencies": {
     "@playwright/test": "^1.40.1",
+    "dotenv": "^16.3.1",
     "eslint-plugin-react": "^7.33.2",
     "jsdom": "^23.0.1",
     "react": "^18.2.0"
