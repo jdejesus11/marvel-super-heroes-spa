@@ -1,10 +1,18 @@
 import React from "react";
 // import {GlobalStyle, theme} from "../styles"
-// import styled from "styled-components";
+import styled from "styled-components";
 // import {applyStyleModifiers} from 'styled-components-modifiers';
 
+
+const PrimaryButton = styled.button`
+  color: red;
+`
+
 const App = () => {
-  return <div>Hola Mundo</div>
+  return <>
+    <PrimaryButton>View More</PrimaryButton>
+    <p>Lorep Ipsum</p>
+  </>
 }
 
 /* const BUTTON_MODIFIERS = {
