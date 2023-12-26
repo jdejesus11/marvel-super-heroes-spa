@@ -1030,7 +1030,7 @@
     core-js-pure "^3.30.2"
     regenerator-runtime "^0.14.0"
 
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.12.5", "@babel/runtime@^7.23.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.12.5", "@babel/runtime@^7.17.8", "@babel/runtime@^7.23.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.23.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.6.tgz#c05e610dc228855dc92ef1b53d07389ed8ab521d"
   integrity sha512-zHd0eUrf5GZoOWVCXp6koAKQTfZV07eit6bGPmJgnZdnSAvvZee6zniW2XMF7Cmc4ISOOnPy3QaSiIJGJkVEDQ==
@@ -7236,6 +7236,13 @@ playwright@1.40.1:
     playwright-core "1.40.1"
   optionalDependencies:
     fsevents "2.3.2"
+
+polished@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-4.2.2.tgz#2529bb7c3198945373c52e34618c8fe7b1aa84d1"
+  integrity sha512-Sz2Lkdxz6F2Pgnpi9U5Ng/WdWAUZxmHrNPoVlm3aAemxoy2Qy7LGjQg4uf8qKelDAUW94F4np3iH2YPf2qefcQ==
+  dependencies:
+    "@babel/runtime" "^7.17.8"
 
 postcss-calc@^9.0.1:
   version "9.0.1"
