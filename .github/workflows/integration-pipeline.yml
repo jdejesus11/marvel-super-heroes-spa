@@ -20,7 +20,7 @@ jobs:
         node-version: [18.x, 19.x, 20.x]
     steps:
     - env:
-      EVENT_CONTEXT: ${{ toJSON(github.event) }}
+        EVENT_CONTEXT: ${{ toJSON(github.event) }}
     - name: Checkout de repositorio ${{ matrix.node-version }}
       uses: actions/checkout@v4
     - name: Creacion de ambiente
