@@ -13,7 +13,7 @@ jobs:
   pruebas-unitarias:
     name: pruebas-unitarias
     if: >-
-      github.event.author.email === 'j.dejesus@uniandes.edu.com'
+      github.event.author.email == 'j.dejesus@uniandes.edu.com'
     runs-on: ubuntu-latest
     permissions:
       checks: write
