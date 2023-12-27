@@ -21,6 +21,8 @@ jobs:
     steps:
     - env:
         EVENT_CONTEXT: ${{ toJSON(github.event) }}
+      run: |
+        echo $EVENT_CONTEXT
     - name: Checkout de repositorio ${{ matrix.node-version }}
       uses: actions/checkout@v4
     - name: Creacion de ambiente
