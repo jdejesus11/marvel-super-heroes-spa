@@ -1,28 +1,26 @@
-name: branches-pipeline
+name: integration-pipeline
+run-name: ${{ github.actor }} is running this job
 on:
   push:
     branches: [main, develop, feature/**, bug/**, release/**]
+    tags: ['v*.*.*']
   pull_request:
     types:
-      - labeled
-      - unlabeled
-      - synchronize
       - opened
-      - editedgit
       - ready_for_review
-      - reopened
-      - unlocked
-    branches: [develop, release, feature/**]
+    branches: [develop, feature/**]
 jobs:
   pruebas-unitarias:
     name: pruebas-unitarias
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
     strategy:
       matrix:
         node-version: [18.x, 19.x, 20.x]
     steps:
     - name: Checkout de repositorio ${{ matrix.node-version }}
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: Creacion de ambiente
       uses: actions/setup-node@v3
       with: 
