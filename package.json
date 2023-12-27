@@ -14,7 +14,7 @@
     "lint": "eslint 'src/**'",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "buid:ci": "rm -rf node_modules && yarn install --frozen-lockfi"
+    "build:ci": "rm -rf node_modules && yarn install --frozen-lockfi"
   },
   "keywords": [],
   "author": "Juan Carlos De Jesus",
