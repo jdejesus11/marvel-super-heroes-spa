@@ -1,0 +1,36 @@
+name: branches-pipeline
+on:
+  push:
+    branches: [main, develop, feature/**, bug/**, release/**]
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - editedgit
+      - ready_for_review
+      - reopened
+      - unlocked
+    branches: [develop, release, feature/**]
+jobs:
+  pruebas-unitarias:
+    name: pruebas-unitarias
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+    steps:
+    - name: Checkout de repositorio ${{ matrix.node-version }}
+      uses: actions/checkout@v2
+    - name: Creacion de ambiente
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Instalacion de dependencias
+      run: |
+      npm run build:ci --if-present
+    - name: Ejecución de pruebas unitarias
+      run: |
+      npm run test
