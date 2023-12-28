@@ -1,0 +1,35 @@
+name: integration-pipeline
+run-name: ${{ github.actor }} is running this job
+on:
+  push:
+    branches: [main, develop, feature/**, bug/**, release/**]
+    tags: ['v*.*.*']
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+    branches: [develop, feature/**]
+jobs:
+  pruebas-unitarias:
+    if: ${{  contains(github.event.commits[0].message, 'Updates') }}
+    name: pruebas-unitarias
+    runs-on: ubuntu-latest
+    env:
+      user: ${{ null }}
+    permissions:
+      checks: write
+    strategy:
+      matrix:
+        node-version: [18.x, 19.x, 20.x]
+    steps:
+    - name: Checkout de repositorio ${{ matrix.node-version }}
+      uses: actions/checkout@v4
+    - name: Creacion de ambiente
+      uses: actions/setup-node@v3
+      with: 
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Instalacion de dependencias
+      run: npm run build:ci
+    - name: Ejecución de pruebas unitarias
+      run: npm run test
