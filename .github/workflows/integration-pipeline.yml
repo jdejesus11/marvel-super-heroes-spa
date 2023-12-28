@@ -11,7 +11,7 @@ on:
     branches: [develop, feature/**]
 jobs:
   pruebas-unitarias:
-    if: ${{ github.event_name == 'push' }}
+    if: ${{  contains(github.event_name, 'push') }}
     name: pruebas-unitarias
     runs-on: ubuntu-latest
     env:
