@@ -9,19 +9,20 @@ on:
       - opened
       - ready_for_review
     branches: [develop, feature/**]
-env:
-  email: juan.de.jesus.mirelles@gmail.com
 jobs:
   pruebas-unitarias:
     name: pruebas-unitarias
     runs-on: ubuntu-latest
+    env:
+      user: jdejesus
     permissions:
       checks: write
     strategy:
       matrix:
         node-version: [18.x, 19.x, 20.x]
     steps:
-    - run: echo 'Current email ${{ env.email }}'
+    - name: Reading ENV> variables
+      run: echo 'User ${{ env.user }}'
     - name: Checkout de repositorio ${{ matrix.node-version }}
       uses: actions/checkout@v4
     - name: Creacion de ambiente
