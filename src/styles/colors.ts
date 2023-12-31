@@ -16,7 +16,21 @@ export const red = {
   200: "#B80C09",
 };
 
+export const green = {
+  100: "#42b883",
+};
+
+export const yellow = {
+  100: "#fdb44b",
+};
+
 export const neutral = {};
+
+export const warnings = {};
+
+export const errors = {
+  primary: red[100],
+};
 
 export const colors = {
   primaryButtonBackgroundColor: red[100],

@@ -3,7 +3,7 @@
 const config = {
   verbose: true,
   "testEnvironment": "jsdom",
-  "testMatch": ["**/src/**.test.ts"],
+   "testMatch": ["**/src/**/**.test.**"],
   "moduleNameMapper": {
     "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMock.js",
     '\\.(css|less|scss|sass|png)$': "identity-obj-proxy"
@@ -25,7 +25,7 @@ module.exports = async () => {
   return {
     verbose: true,
     "testEnvironment": "jsdom",
-    "testMatch": ["**/src/**.test.ts"],
+    "testMatch": ["**/src/**/**.test.**"],
     "moduleNameMapper": {
       "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMock.js",
       '\\.(css|less|scss|sass)$': "identity-obj-proxy"

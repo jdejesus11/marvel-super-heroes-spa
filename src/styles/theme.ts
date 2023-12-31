@@ -1,4 +1,4 @@
-import { red, black, gray, white } from "./colors";
+import { red, black, gray, white, green, yellow } from "./colors";
 import { TypeScale, Typography } from "./typography";
 
 export const Theme = {
@@ -22,4 +22,12 @@ export const Theme = {
   textColorOnTertiary: white[100],
 
   // Backgrounds
+
+  // Status
+  status: {
+    successColor: green[100],
+    successColorTextOnPrimary: white[100],
+    errorColor: red[100],
+    warningColor: yellow[100],
+  },
 };

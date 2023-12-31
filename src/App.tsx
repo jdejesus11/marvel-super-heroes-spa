@@ -1,8 +1,10 @@
 import React from "react";
 // import {GlobalStyle, theme} from "../styles"
-import styled from "styled-components";
+import styled, {ThemeProvider} from "styled-components";
 import { Theme } from "./styles"
 import { GlobalStyle } from "./styles/global";
+import { Illustrations } from "./assets";
+import { Button } from "./components/button/Button";
 
 const BaseButton = styled.button`
   cursor: pointer;
@@ -50,11 +52,34 @@ const Paraghraph = styled.p`
   line-height: 1.6;
 `;
 
+
+const Banner = styled.span`
+  background-color: ${Theme.status.successColor};
+  padding: 16px 32px;
+  color: ${Theme.status.successColorTextOnPrimary};
+`
+
+const WarningBanner = styled.span`
+  background-color: ${Theme.status.warningColor};
+  padding: 16px 32px;
+  color: ${Theme.status.successColorTextOnPrimary};
+`
+
 const App = () => {
   return <>
+    <GlobalStyle /> 
+      <ThemeProvider theme={Theme}>
+      <Button text="View more" />
+    </ThemeProvider>
+  </>
+  }
+
+/* const App = () => {
+  return <>
     <GlobalStyle />
+    <ThemeProvider theme={Theme}>
     <div>
-    <RegularButton>View More</RegularButton>
+    <RegularButton  >View More</RegularButton>
     </div>
     <div>
        <RegularButton disabled>View More</RegularButton>
@@ -68,8 +93,20 @@ const App = () => {
     <span>Lorep Ipsum</span>
     <div>
     <ButtonLink>Lorep Ipsum</ButtonLink>
+    <div>
+      <Banner>Lorep Ipsum</Banner>
     </div>
+        <div>
+       <WarningBanner>Lorep Ipsum</WarningBanner>
+    </div>
+    </div>
+    <div>
+      {
+        <img src={Illustrations.ArrowLeft} />
+      }
+    </div>
+    </ThemeProvider>
   </>
-}
+} */
 
 export default App;
