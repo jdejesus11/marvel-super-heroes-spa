@@ -1,23 +1,24 @@
 import React from "react";
 // import {GlobalStyle, theme} from "../styles"
-import styled, {ThemeProvider} from "styled-components";
-import { Theme } from "./styles"
+import styled, { ThemeProvider } from "styled-components";
+import { Theme } from "./styles";
 import { GlobalStyle } from "./styles/global";
 import { Illustrations } from "./assets";
 import { Button } from "./components/button/Button";
+import { LinkButton } from "./components/link-button/LinkButton";
 
 const BaseButton = styled.button`
   cursor: pointer;
   font-family: ${Theme.primaryFont};
   font-size: ${Theme.primaryFontSizes.regular};
   border: 0px;
-  min-width:100px;
-`
+  min-width: 100px;
+`;
 
 const RegularButton = styled(BaseButton)`
-  padding:16px 32px;
+  padding: 16px 32px;
   background-color: ${Theme.primaryButtonColor};
-  transition: .3s;
+  transition: 0.3s;
   color: ${Theme.textColorOnTertiary};
   &:hover {
     background-color: ${Theme.primaryHoverColor};
@@ -26,25 +27,25 @@ const RegularButton = styled(BaseButton)`
     background-color: ${Theme.primaryDisabledButtonColor};
     cursor: not-allowed;
   }
-`
+`;
 
 const FocusRegularButton = styled(RegularButton)`
-   &:focus {
-     outline: 3px solid ${Theme.primaryButtonColor};
-     outline-offset: 2px;
-   }
+  &:focus {
+    outline: 3px solid ${Theme.primaryButtonColor};
+    outline-offset: 2px;
+  }
 `;
 
 const ButtonLink = styled.a`
   cursor: pointer;
   color: ${Theme.textColorOnSecondary};
-  transition: .3s;
+  transition: 0.3s;
   line-height: 1.6;
 
   &:hover {
     color: ${Theme.primaryHoverColor};
   }
-`
+`;
 
 const Paraghraph = styled.p`
   width: 200px;
@@ -52,27 +53,36 @@ const Paraghraph = styled.p`
   line-height: 1.6;
 `;
 
-
 const Banner = styled.span`
   background-color: ${Theme.status.successColor};
   padding: 16px 32px;
   color: ${Theme.status.successColorTextOnPrimary};
-`
+`;
 
 const WarningBanner = styled.span`
   background-color: ${Theme.status.warningColor};
   padding: 16px 32px;
   color: ${Theme.status.successColorTextOnPrimary};
-`
+`;
 
 const App = () => {
-  return <>
-    <GlobalStyle /> 
+  return (
+    <>
+      <GlobalStyle />
       <ThemeProvider theme={Theme}>
-      <Button text="View more" />
-    </ThemeProvider>
-  </>
-  }
+        <div>
+          {" "}
+          <Button text="View more" />
+        </div>
+        <div>
+          <LinkButton text="Lorep ipsum" />
+        </div>
+        <div></div>
+        <div></div>
+      </ThemeProvider>
+    </>
+  );
+};
 
 /* const App = () => {
   return <>

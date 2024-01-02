@@ -2,7 +2,7 @@ import React from "react";
 import { Button, ButtonProps } from "./Button";
 import { render, screen } from "@testing-library/react";
 
-describe("Given a regular button", () => {
+describe("Given a button", () => {
   describe("When it is mounted", () => {
     let onClickMock: jest.Mock;
     let props: ButtonProps;
