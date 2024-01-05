@@ -7,6 +7,7 @@ import { Illustrations } from "./assets";
 import { Button } from "./components/button/Button";
 import { LinkButton } from "./components/link-button/LinkButton";
 import { DropDownList } from "./components/drop-down-list/DropDownList";
+import { SearchInput } from "./components/search-input/SearchInput";
 
 const BaseButton = styled.button`
   cursor: pointer;
@@ -84,7 +85,9 @@ const App = () => {
           <div>
           <LinkButton text="Lorep ipsum" />
         </div>
-        <div></div>
+        <div>
+          <SearchInput ariaLabel="search input" placeholder="Search..." />
+        </div>
       </ThemeProvider>
     </>
   );

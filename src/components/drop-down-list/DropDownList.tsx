@@ -60,6 +60,7 @@ const StyledOptionsItemContent = styled.p`
 const Container = styled.div`
   position: relative;
   display: inline-block;
+  z-index:2000;
 `;
 
 const DownArrowIcon = styled.img`
