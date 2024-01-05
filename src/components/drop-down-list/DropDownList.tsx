@@ -5,7 +5,7 @@ import { Illustrations } from "../../assets/index";
 
 type Option = { key: string; value: string };
 
-export interface DropDownListProps {
+export interface DropDownListProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "onChange"> {
   options: Option[];
   defaultMessage?: string;
   defaultOptionIndex?: number;
@@ -67,7 +67,7 @@ const DownArrowIcon = styled.img`
   height: 25px;
 `;
 
-export const DropDownList: React.FC<DropDownListProps> = ({ options, defaultMessage, defaultOptionIndex, onChange }) => {
+export const DropDownList: React.FC<DropDownListProps> = ({ options, defaultMessage, defaultOptionIndex, onChange, disabled }) => {
   const [selectedOption, setSelectedOption] = useState<Option | null>(defaultOptionIndex != undefined ? options[defaultOptionIndex] : null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -91,12 +91,13 @@ export const DropDownList: React.FC<DropDownListProps> = ({ options, defaultMess
   };
 
   const onDropDownListClick = () => {
+    if (disabled) return;
     showOptions();
     setIsVisible(!isVisible);
   };
 
   const onDropDownItemClick = (option: Option) => {
-    if (!isVisible) {
+    if (!isVisible || disabled) {
       return;
     }
     hideOptions();
