@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     html {
         font-size: 16px;
         font-family: ${Theme.primaryFont};
-        border-box: border-box;
+        box-sizing: border-box;
     }
 
     *, *:before, *:after {

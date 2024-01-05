@@ -6,6 +6,7 @@ import { GlobalStyle } from "./styles/global";
 import { Illustrations } from "./assets";
 import { Button } from "./components/button/Button";
 import { LinkButton } from "./components/link-button/LinkButton";
+import { DropDownList } from "./components/drop-down-list/DropDownList";
 
 const BaseButton = styled.button`
   cursor: pointer;
@@ -77,7 +78,12 @@ const App = () => {
         <div>
           <LinkButton text="Lorep ipsum" />
         </div>
-        <div></div>
+        <div>
+          <DropDownList defaultMessage="Select" options={[{key:"Asc", value: "Asc"},{key:"Des", value: "Des"}]} defaultOptionIndex={0} />
+        </div>
+          <div>
+          <LinkButton text="Lorep ipsum" />
+        </div>
         <div></div>
       </ThemeProvider>
     </>
