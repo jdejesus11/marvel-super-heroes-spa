@@ -8,6 +8,7 @@ import { Button } from "./components/button/Button";
 import { LinkButton } from "./components/link-button/LinkButton";
 import { DropDownList } from "./components/drop-down-list/DropDownList";
 import { SearchInput } from "./components/search-input/SearchInput";
+import { Paginator } from "./components/paginator/Paginator";
 
 const BaseButton = styled.button`
   cursor: pointer;
@@ -87,6 +88,9 @@ const App = () => {
         </div>
         <div>
           <SearchInput ariaLabel="search input" placeholder="Search..." />
+        </div>
+        <div>
+          <Paginator ariaLabel="paginator" page={1} pages={10} onPageChange={() => {}} />
         </div>
       </ThemeProvider>
     </>

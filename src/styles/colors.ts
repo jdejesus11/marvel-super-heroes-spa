@@ -1,6 +1,7 @@
 export const gray = {
   100: "#E5E7E6",
   200: "#606470",
+  300: "#e3e3e3",
 };
 
 export const white = {

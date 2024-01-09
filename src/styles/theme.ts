@@ -7,6 +7,7 @@ export const Theme = {
   primaryHoverColor: red[200],
   primaryActiveColor: red[100],
   primaryDisabledButtonColor: gray[100],
+  primarySelectedButtonColor: gray[300],
 
   // Fonts
   primaryFont: Typography.poppins,
