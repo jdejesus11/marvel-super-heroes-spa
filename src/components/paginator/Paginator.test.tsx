@@ -18,7 +18,7 @@ describe("Given a paginator with pages", () => {
         };
       });
 
-      it("Then users can click and go foward", () => {
+      it("Then users can click and go foward sequentially", () => {
         render(<Paginator {...props} />);
 
         const buttons = document.querySelectorAll("button");
@@ -30,7 +30,7 @@ describe("Given a paginator with pages", () => {
         }
       });
 
-      it("Then users can click and go backward", () => {
+      it("Then users can click and go backward sequentially", () => {
         render(<Paginator {...props} />);
 
         const buttons = document.querySelectorAll("button");
@@ -57,5 +57,10 @@ describe("Given a paginator with pages", () => {
         expect(onPageChange).toHaveBeenCalled();
       });
     });
+
+    describe("And there is just one page", () => {
+        it.todo("Then users cannot click on arrow buttons")
+    })
   });
 });
+

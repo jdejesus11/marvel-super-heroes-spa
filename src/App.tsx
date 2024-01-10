@@ -90,46 +90,11 @@ const App = () => {
           <SearchInput ariaLabel="search input" placeholder="Search..." />
         </div>
         <div>
-          <Paginator ariaLabel="paginator" page={1} pages={10} onPageChange={() => {}} />
+          <Paginator ariaLabel="paginator" page={1} pages={20} offset={5} onPageChange={() => {}} />
         </div>
       </ThemeProvider>
     </>
   );
 };
-
-/* const App = () => {
-  return <>
-    <GlobalStyle />
-    <ThemeProvider theme={Theme}>
-    <div>
-    <RegularButton  >View More</RegularButton>
-    </div>
-    <div>
-       <RegularButton disabled>View More</RegularButton>
-    </div>
-    <div>
-    <FocusRegularButton>View More</FocusRegularButton>
-    </div>
-    <h2>Characters</h2>
-    <h3>Captain America</h3>
-    <Paraghraph>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</Paraghraph>
-    <span>Lorep Ipsum</span>
-    <div>
-    <ButtonLink>Lorep Ipsum</ButtonLink>
-    <div>
-      <Banner>Lorep Ipsum</Banner>
-    </div>
-        <div>
-       <WarningBanner>Lorep Ipsum</WarningBanner>
-    </div>
-    </div>
-    <div>
-      {
-        <img src={Illustrations.ArrowLeft} />
-      }
-    </div>
-    </ThemeProvider>
-  </>
-} */
 
 export default App;

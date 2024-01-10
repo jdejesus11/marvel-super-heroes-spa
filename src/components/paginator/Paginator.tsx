@@ -1,3 +1,4 @@
+import { off } from "process";
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { Illustrations } from "../../assets/index";
@@ -7,6 +8,7 @@ export interface PaginatorProps {
   pages: number;
   onPageChange: () => void;
   ariaLabel: string;
+  offset?: number;
 }
 
 const PageContainer = styled.li``;
@@ -64,10 +66,17 @@ const Container = styled.ul`
   gap: 8px;
 `;
 
-export const Paginator: React.FC<PaginatorProps> = ({ onPageChange, pages, ariaLabel }) => {
+export const Paginator: React.FC<PaginatorProps> = ({ onPageChange, pages, ariaLabel, offset = 3 }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [initialPage, setInitialPage] = useState(1);
 
   if (pages <= 0) return;
+
+  const hasPageReachedUpperLimit = (page: number) => page === initialPage + offset;
+
+  const hasPageReachedLowerLimit = (page: number) => page === initialPage - 1;
+
+  const isPageVisible = (index: number) =>  index + 1 >= initialPage && index + 1 < initialPage + offset;
 
   const onPageChangeEvent = (page: number) => {
     setCurrentPage(page);
@@ -75,15 +84,23 @@ export const Paginator: React.FC<PaginatorProps> = ({ onPageChange, pages, ariaL
   };
 
   const onPageGoForwardChangeEvent = () => {
-    if (currentPage + 1 > pages) return;
-    setCurrentPage(currentPage + 1);
-    onPageChangeEvent(currentPage + 1);
+    const updatedPage = currentPage + 1;
+    if (updatedPage > pages) return;
+    setCurrentPage(updatedPage);
+    onPageChangeEvent(updatedPage);
+    if (hasPageReachedUpperLimit(updatedPage)) {
+      setInitialPage(updatedPage);
+    }
   };
 
   const onPageGoBackwardChangeEvent = () => {
-    if (currentPage - 1 <= 0) return;
-    setCurrentPage(currentPage - 1);
-    onPageChangeEvent(currentPage - 1);
+    const updatedPage = currentPage - 1;
+    if (updatedPage <= 0) return;
+    setCurrentPage(updatedPage);
+    onPageChangeEvent(updatedPage);
+    if (hasPageReachedLowerLimit(updatedPage)) {
+      setInitialPage(initialPage - offset);
+    }
   };
 
   return (
@@ -93,13 +110,16 @@ export const Paginator: React.FC<PaginatorProps> = ({ onPageChange, pages, ariaL
           <Icon src={Illustrations.LeftArrow} alt="go backward" />
         </IconContainer>
       </PageContainer>
-      {Array.from({ length: pages }).map((__, index) => (
-        <PageContainer key={index}>
-          <Page aria-current={currentPage === index + 1} onClick={() => onPageChangeEvent(index + 1)} $selected={currentPage === index + 1}>
-            {index + 1}
-          </Page>
-        </PageContainer>
-      ))}
+      {Array.from({ length: pages }).map(
+        (__, index) =>
+            isPageVisible(index) && (
+            <PageContainer key={index}>
+              <Page aria-current={currentPage === index + 1} onClick={() => onPageChangeEvent(index + 1)} $selected={currentPage === index + 1}>
+                {index + 1}
+              </Page>
+            </PageContainer>
+          )
+      )}
       <PageContainer>
         <IconContainer onClick={() => onPageGoForwardChangeEvent()}>
           <Icon src={Illustrations.RigthArrow} alt="go forward" />
