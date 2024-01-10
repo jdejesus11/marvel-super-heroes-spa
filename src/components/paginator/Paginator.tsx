@@ -1,4 +1,3 @@
-import { off } from "process";
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { Illustrations } from "../../assets/index";
@@ -59,6 +58,10 @@ const IconContainer = styled.button`
   text-align: center;
   cursor: pointer;
   background: ${(props) => props.theme.textColorOnTertiary};
+  &:disabled {
+    background-color: ${(props) => props.theme.primaryDisabledButtonColor};
+    cursor: not-allowed;
+  }
 `;
 
 const Container = styled.ul`
@@ -76,7 +79,13 @@ export const Paginator: React.FC<PaginatorProps> = ({ onPageChange, pages, ariaL
 
   const hasPageReachedLowerLimit = (page: number) => page === initialPage - 1;
 
-  const isPageVisible = (index: number) =>  index + 1 >= initialPage && index + 1 < initialPage + offset;
+  const isPageVisible = (index: number) => index + 1 >= initialPage && index + 1 < initialPage + offset;
+
+  const isLeftArrowButtonDisabled = () => pages == 1 || currentPage == 1;
+
+  const isRightArrowButtonDisabled = () => pages == 1 || currentPage == pages;
+
+  const isCurrentPageSelected = (index:number) => currentPage === index + 1
 
   const onPageChangeEvent = (page: number) => {
     setCurrentPage(page);
@@ -106,22 +115,22 @@ export const Paginator: React.FC<PaginatorProps> = ({ onPageChange, pages, ariaL
   return (
     <Container aria-label={ariaLabel}>
       <PageContainer>
-        <IconContainer onClick={() => onPageGoBackwardChangeEvent()}>
+        <IconContainer disabled={isLeftArrowButtonDisabled()} onClick={() => onPageGoBackwardChangeEvent()}>
           <Icon src={Illustrations.LeftArrow} alt="go backward" />
         </IconContainer>
       </PageContainer>
       {Array.from({ length: pages }).map(
         (__, index) =>
-            isPageVisible(index) && (
+          isPageVisible(index) && (
             <PageContainer key={index}>
-              <Page aria-current={currentPage === index + 1} onClick={() => onPageChangeEvent(index + 1)} $selected={currentPage === index + 1}>
+              <Page aria-current={isCurrentPageSelected(index)} onClick={() => onPageChangeEvent(index + 1)} $selected={currentPage === index + 1}>
                 {index + 1}
               </Page>
             </PageContainer>
           )
       )}
       <PageContainer>
-        <IconContainer onClick={() => onPageGoForwardChangeEvent()}>
+        <IconContainer disabled={isRightArrowButtonDisabled()} onClick={() => onPageGoForwardChangeEvent()}>
           <Icon src={Illustrations.RigthArrow} alt="go forward" />
         </IconContainer>
       </PageContainer>

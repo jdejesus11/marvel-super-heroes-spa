@@ -81,16 +81,23 @@ const App = () => {
           <LinkButton text="Lorep ipsum" />
         </div>
         <div>
-          <DropDownList defaultMessage="Select" options={[{key:"Asc", value: "Asc"},{key:"Des", value: "Des"}]} defaultOptionIndex={0} />
+          <DropDownList
+            defaultMessage="Select"
+            options={[
+              { key: "Asc", value: "Asc" },
+              { key: "Des", value: "Des" },
+            ]}
+            defaultOptionIndex={0}
+          />
         </div>
-          <div>
+        <div>
           <LinkButton text="Lorep ipsum" />
         </div>
         <div>
           <SearchInput ariaLabel="search input" placeholder="Search..." />
         </div>
         <div>
-          <Paginator ariaLabel="paginator" page={1} pages={20} offset={5} onPageChange={() => {}} />
+          <Paginator ariaLabel="paginator" page={1} pages={8} offset={5} onPageChange={() => {}} />
         </div>
       </ThemeProvider>
     </>
