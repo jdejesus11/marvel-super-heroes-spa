@@ -23,6 +23,8 @@ export const Theme = {
   textColorOnTertiary: white[100],
 
   // Backgrounds
+  primaryBackground: black[100],
+  secondaryBackground: gray[100],
 
   // Status
   status: {

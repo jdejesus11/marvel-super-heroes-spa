@@ -17,7 +17,9 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         margin: 0;
-        min-heigth: 100vh;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
 
     ul, ol {
