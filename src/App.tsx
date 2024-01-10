@@ -1,97 +1,107 @@
 import React from "react";
 // import {GlobalStyle, theme} from "../styles"
-// import styled from "styled-components";
-// import {applyStyleModifiers} from 'styled-components-modifiers';
-
-const App = () => {
-  return <div>Hola Mundo</div>
-}
-
-/* const BUTTON_MODIFIERS = {
-  small: () => `
-    font-size: 0.5rem;
-    padding: 8px;
-  `,
-  large: () => `
-    font-size: .4rem;
-  `
-}
+import styled, { ThemeProvider } from "styled-components";
+import { Theme } from "./styles";
+import { GlobalStyle } from "./styles/global";
+import { Illustrations } from "./assets";
+import { Button } from "./components/button/Button";
+import { LinkButton } from "./components/link-button/LinkButton";
+import { DropDownList } from "./components/drop-down-list/DropDownList";
+import { SearchInput } from "./components/search-input/SearchInput";
+import { Paginator } from "./components/paginator/Paginator";
 
 const BaseButton = styled.button`
-  border:0px;
-  background-color: ${theme.secondaryBackgroundColor};
-  color: ${theme.secondaryTextColor};
   cursor: pointer;
-`
+  font-family: ${Theme.primaryFont};
+  font-size: ${Theme.primaryFontSizes.regular};
+  border: 0px;
+  min-width: 100px;
+`;
 
-const LargeButton = styled(BaseButton)`
+const RegularButton = styled(BaseButton)`
+  padding: 16px 32px;
+  background-color: ${Theme.primaryButtonColor};
+  transition: 0.3s;
+  color: ${Theme.textColorOnTertiary};
   &:hover {
-    background-color: ${theme.primaryHoverBackgroundColor};
-    transition: .5s;
-  }
-  &:focus{
-    background-color: ${theme.primaryHoverBackgroundColor};
-    outline: 3px solid ${theme.primaryHoverBackgroundColor};
-    outline-offset: 2px;
+    background-color: ${Theme.primaryHoverColor};
   }
   &:disabled {
-    background-color: ${theme.primaryDisabledBackgroundColor};
-    cursor:not-allowed;
+    background-color: ${Theme.primaryDisabledButtonColor};
+    cursor: not-allowed;
   }
-  padding: 16px 32px;
-  min-width: 100px;
-
-  ${applyStyleModifiers(BUTTON_MODIFIERS)}
 `;
 
-const MediumButton = styled(BaseButton)`
-    padding: 8px 16px;
-    min-width: 100px;
-
-    ${applyStyleModifiers(BUTTON_MODIFIERS)}
-`;
-
-const GhostButton = styled(BaseButton)`
-  padding: 16px 32px;
-  min-width: 100px;
-  background-color: ${theme.primaryGhostBackgroundColor};
-  color: ${theme.primaryBackgroundColor};
-  &:hover {
-    border: 1px solid ${theme.primaryHoverBackgroundColor};
-    transition: .5s;
-  }
-  &:focus{
-    outline: 3px solid ${theme.primaryHoverBackgroundColor};
+const FocusRegularButton = styled(RegularButton)`
+  &:focus {
+    outline: 3px solid ${Theme.primaryButtonColor};
     outline-offset: 2px;
   }
+`;
 
-  ${applyStyleModifiers(BUTTON_MODIFIERS)}
-`
+const ButtonLink = styled.a`
+  cursor: pointer;
+  color: ${Theme.textColorOnSecondary};
+  transition: 0.3s;
+  line-height: 1.6;
 
-const DescriptionParagraph = styled.p`
-  color: ${theme.primaryTextColor};
-  line-height: 1.7;
-`
+  &:hover {
+    color: ${Theme.primaryHoverColor};
+  }
+`;
 
-const Title = styled.span`
-  font-weight: 600;
-  color: ${theme.ternaryTextColor};
-  font-size: ${theme.h5}
+const Paraghraph = styled.p`
+  width: 200px;
+  color: ${Theme.textColorOnSecondary};
+  line-height: 1.6;
+`;
+
+const Banner = styled.span`
+  background-color: ${Theme.status.successColor};
+  padding: 16px 32px;
+  color: ${Theme.status.successColorTextOnPrimary};
+`;
+
+const WarningBanner = styled.span`
+  background-color: ${Theme.status.warningColor};
+  padding: 16px 32px;
+  color: ${Theme.status.successColorTextOnPrimary};
 `;
 
 const App = () => {
   return (
     <>
-    <GlobalStyle />
-    <div style={{display:"flex", flexDirection: "column", width:"auto", alignItems:"center"}}>
-     <Title>LOREP IPSUM</Title>
-     <DescriptionParagraph>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</DescriptionParagraph>
-     <LargeButton modifiers={['success', 'large']}  >View more</LargeButton>
-     <MediumButton >View more</MediumButton>
-     <GhostButton>View More</GhostButton>
-    </div>
+      <GlobalStyle />
+      <ThemeProvider theme={Theme}>
+        <div>
+          {" "}
+          <Button text="View more" />
+        </div>
+        <div>
+          <LinkButton text="Lorep ipsum" />
+        </div>
+        <div>
+          <DropDownList
+            defaultMessage="Select"
+            options={[
+              { key: "Asc", value: "Asc" },
+              { key: "Des", value: "Des" },
+            ]}
+            defaultOptionIndex={0}
+          />
+        </div>
+        <div>
+          <LinkButton text="Lorep ipsum" />
+        </div>
+        <div>
+          <SearchInput ariaLabel="search input" placeholder="Search..." />
+        </div>
+        <div>
+          <Paginator ariaLabel="paginator" page={1} pages={8} offset={5} onPageChange={() => {}} />
+        </div>
+      </ThemeProvider>
     </>
   );
-}; */
+};
 
 export default App;

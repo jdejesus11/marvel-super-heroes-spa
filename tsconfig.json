@@ -11,8 +11,8 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "isolatedModules": false,
-    "types": ["node"]
+    "types": ["jest", "node"]
   },
   "include": ["src/**/*", "*.ts", "*.tsx", "src/utils", "styles/typoghraphy.js"],
-  "exclude": ["mocks", "node_modules", "**/*.spec.ts", "assets", "dist", "./webpack.dev.js", "./webpack.common.js", "./webpack.prod.js"]
+  "exclude": ["e2e", "mocks", "node_modules", "**/*.spec.ts", "assets", "dist", "./webpack.dev.js", "./webpack.common.js", "./webpack.prod.js"]
 }
