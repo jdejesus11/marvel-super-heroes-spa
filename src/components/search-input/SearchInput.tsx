@@ -17,7 +17,8 @@ const StyledSearchInput = styled(BaseInput)`
   flex: 1;
   padding: 16px 16px;
   color: ${(props) => props.theme.textColorOnSecondary};
-`
+  max-height: 50px;
+`;
 
 const GlassIcon = styled.img`
   width: 25px;
@@ -25,14 +26,14 @@ const GlassIcon = styled.img`
 `;
 
 const IconContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position:absolute;
-    padding-left: 16px;
-    right: 16px;
-    top:14px;
-    background: ${(props) => props.theme.textColorOnTertiary};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding-left: 16px;
+  right: 16px;
+  top: 14px;
+  background: ${(props) => props.theme.textColorOnTertiary};
 `;
 
 const Container = styled.div`
@@ -92,14 +93,12 @@ const DownArrowIcon = styled.img`
 `; */
 
 export const SearchInput: React.FC<SearchInputProps> = ({ placeholder, ariaLabel }) => {
-  
-
   return (
     <Container>
-    <StyledSearchInput aria-label={ariaLabel} placeholder={placeholder} />
-    <IconContainer>
+      <StyledSearchInput aria-label={ariaLabel} placeholder={placeholder} />
+      <IconContainer>
         <GlassIcon src={Illustrations.Glass} aria-hidden="true" />
-    </IconContainer>
+      </IconContainer>
     </Container>
   );
 };

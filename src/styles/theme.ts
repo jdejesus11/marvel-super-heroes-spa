@@ -25,6 +25,8 @@ export const Theme = {
   // Backgrounds
   primaryBackground: black[100],
   secondaryBackground: gray[100],
+  tertiaryBackground: gray[200],
+  quaternaryBackground: gray[300],
 
   // Status
   status: {
